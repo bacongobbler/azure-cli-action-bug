@@ -12,8 +12,6 @@ jobs:
       - uses: bacongobbler/azure-blob-storage-upload@main
         with:
           source_dir: folder
-          account_name: ${{ secrets.AZURE_ACCOUNT_NAME }}
-          container_name: ${{ secrets.AZURE_CONTAINER_NAME }}
-          sas_token: ${{ secrets.AZURE_STORAGE_SAS_TOKEN }}
+          connection_string: ${{ secrets.AZURE_BLOB_STORAGE_CONNECTION_STRING }}
           extra_args: "--destination-path path/ --pattern '*.zip'"
           overwrite: "true"
