@@ -14,5 +14,5 @@ jobs:
           source_dir: folder
           connection_string: ${{ secrets.AZURE_BLOB_STORAGE_CONNECTION_STRING }}
           container_name: "test"
-          extra_args: "--destination-path path/ --pattern '*.zip'"
+          extra_args: "--destination-path path/ --pattern *.zip"
           overwrite: "true"
