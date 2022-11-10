@@ -1,0 +1,19 @@
+name: Upload
+on: push
+jobs:
+  upload:
+    runs-on: ubuntu-22.04
+    steps:
+      - run: |
+          mkdir folder
+          touch a b
+          zip folder/test.zip a b
+          touch some-other-file
+      - uses: bacongobbler/azure-blob-storage-upload@main
+        with:
+          source_dir: folder
+          account_name: ${{ secrets.AZURE_ACCOUNT_NAME }}
+          container_name: ${{ secrets.AZURE_CONTAINER_NAME }}
+          sas_token: ${{ secrets.AZURE_STORAGE_SAS_TOKEN }}
+          extra_args: "--destination-path path/ --pattern '*.zip'"
+          overwrite: "true"
